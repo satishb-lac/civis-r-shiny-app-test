@@ -19,12 +19,14 @@ services:
     #   - APPLICATION_LOGS_TO_STDOUT=false
     ports:
       - '3838:3838'
+    healthcheck:
+      timeout: 900s
     volumes:
       - 'shiny_logs:/var/log/shiny-server'
       # Comment the line below out for initial testing. With it commented out,
       # going to localhost:80 in one's web browser will show a "Welcome to
       # Shiny Server!" diagnostics page.
-      # - './mountpoints/apps:/srv/shiny-server'
+      - './mountpoints/apps:/srv/shiny-server'
 
 volumes:
   shiny_logs:
